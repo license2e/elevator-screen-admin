@@ -1,0 +1,36 @@
+extend ../layout
+
+block pages_css
+
+block content
+  include shared/header
+  .main
+    .container
+      .row
+        .span12
+          .widget.stacked
+            .widget-header
+              i.icon-pencil
+              h3 Feeds
+            .widget-content
+              section#setting-add
+                form#setting-edit-form.form-horizontal.setting-edit-form(action="/setting/#{setting.id}/", method="post")
+                  input(value="#{token_csrf}", name="_csrf", type="hidden")
+                  fieldset
+                    .control-group
+                      label.control-label Key
+                      .controls
+                        span #{setting.key}
+                    .control-group
+                      label.control-label Name
+                      .controls
+                        span #{setting.name}
+                    .control-group
+                      label.control-label(for="setting-value") Value
+                      .controls
+                        input#setting-value.span8(type="text", name="value")
+                    .form-actions
+                      button.btn.btn-custom.btn-primary(type="submit") Edit
+                      &nbsp;&nbsp;
+                      a.btn.btn-custom(href="/settings/") Cancel
+  include shared/footer

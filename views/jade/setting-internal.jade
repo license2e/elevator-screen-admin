@@ -1,0 +1,35 @@
+extend ../layout
+
+block pages_css
+  link( rel='stylesheet', href='/css/pages/dashboard.css')
+
+block content
+  include shared/header
+  .main
+    .container
+      .row
+        .span12
+          .widget.stacked
+            .widget-header
+              i.icon-cog
+              h3 Internal Feed Settings
+            .widget-content
+              section#setting-internal
+                form#setting-edit-internal.form-horizontal.setting-edit-form(action="/setting/internal/", method="post")
+                  input(value="#{token_csrf}", name="_csrf", type="hidden")
+                  .span12 
+                    p Specify the url to news and/or social in the Elevator Screen app
+                  fieldset
+                    .control-group
+                      label.control-label(for="setting-news") Internal News
+                      .controls
+                        input#setting-news.span8(type="text", name="news", value="#{settings['internal_news'].value}")
+                    .control-group
+                      label.control-label(for="setting-alerts") Internal Alerts
+                      .controls
+                        input#setting-alerts.span8(type="text", name="alerts", value="#{settings['internal_alerts'].value}")
+                    .form-actions
+                      button.btn.btn-custom.btn-primary(type="submit") Save
+                      &nbsp;&nbsp;
+                      a.btn.btn-custom(href="/") Cancel
+  include shared/footer

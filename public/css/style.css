@@ -1,0 +1,26 @@
+#elevator-screen .widget-header #user-left{font-size:11px;color:#999}
+#elevator-screen .widget-header #user-right{font-size:11px;margin-left:7px;color:#999}
+#elevator-screen .widget-header #user-middle{margin-left:-17px;font-size:18px}
+#elevator-screen .widget-header #debug-inspect{margin-left:-4px;font-size:12px;color:rgba(255,255,255,0.8);text-shadow:0 1px 1px #222}
+#elevator-screen .subnavbar li #admin-key{font-size:18px;line-height:46px;margin:0 0 0 -23px;color:#ccc}
+#elevator-screen .clear{clear:both}
+#elevator-screen input[type="file"]{line-height:14px;margin-top:7px}
+#elevator-screen .hide-overflow{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#elevator-screen .navbar .brand{padding:0 20px;}
+#elevator-screen .navbar .brand img{margin:-3px 0 0 0}
+#elevator-screen .navbar .brand span{margin:0 0 0 10px}
+#elevator-screen .navbar .user-info{padding:0 7px}
+#elevator-screen .account-container form h1{position:relative;height:109px;margin-bottom:20px;}
+#elevator-screen .account-container form h1 img#logo{position:absolute;top:-48px;left:50%;margin-left:-51px;z-index:20}
+#elevator-screen .account-container form h1 #logo-bkg{border-radius:51px;width:102px;height:102px;background-color:#f9f9f9;position:absolute;top:-52px;left:50%;margin-left:-51px;z-index:18;clip:rect(0,102px,36px,0)}
+#elevator-screen .account-container form h1 #logo-bkg:before{box-sizing:border-box;display:block;border:1px solid #d5d5d5;width:100%;height:100%;border-radius:50%;content:''}
+#elevator-screen .shortcuts #forecast-shortcut{position:relative;}
+#elevator-screen .shortcuts #forecast-shortcut #sun{font-size:38px;position:absolute;top:1px;left:-3px}
+#elevator-screen .shortcuts #forecast-shortcut #cloud{margin-left:5px;font-size:27px;margin-bottom:0;display:block}
+#elevator-screen .shortcuts #inspect-icon{color:rgba(255,255,255,0.7);text-shadow:0 1px 1px #222;margin-left:-16px;font-size:24px}
+#elevator-screen #feeds-section,#elevator-screen #users-section{margin:30px 0 0 0}
+#elevator-screen .action-table .td-actions{min-width:110px}
+#elevator-screen .action-table .td-status{width:70px;}
+#elevator-screen .action-table .td-status em.active{font-weight:bold;color:#5bb75b}
+#elevator-screen .action-table .td-status em.disabled{color:#da4f49}
+#elevator-screen #setting-forecast #setting-forecast-map{height:400px}

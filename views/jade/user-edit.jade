@@ -1,0 +1,44 @@
+extend ../layout
+
+block pages_css
+
+block content
+  include shared/header
+  .main
+    .container
+      .row
+        .span12
+          .widget.stacked
+            .widget-header
+              i.icon-pencil
+              h3 Edit Profile
+            .widget-content
+              section#user-edit
+                form#user-edit-form.form-horizontal(action="/user/profile/", method="post")
+                  input(value="#{token_csrf}", name="_csrf", type="hidden")
+                  fieldset
+                    .control-group
+                      label.control-label(for="user-username") Username
+                      .controls
+                        input#user-username.span8(type="text", name="username", value="#{usr.username}")
+                    .control-group
+                      label.control-label(for="user-password") Password
+                      .controls
+                        input#user-password.span8(type="password", name="user_password")
+                    .control-group
+                      label.control-label(for="user-confirm-password") Confirm Password
+                      .controls
+                        input#user-confirm-password.span8(type="password", name="user_confirm_password")
+                    .control-group
+                      label.control-label(for="user-first-name") First Name
+                      .controls
+                        input#user-first-name.span8(type="text", name="first_name", value="#{usr.firstName}")
+                    .control-group
+                      label.control-label(for="user-last-name") Last Name
+                      .controls
+                        input#user-last-name.span8(type="text", name="last_name", value="#{usr.lastName}")
+                    .form-actions
+                      button.btn.btn-custom.btn-primary(type="submit") Update
+                      &nbsp;&nbsp;
+                      button.btn.btn-custom(type="reset") Cancel
+  include shared/footer

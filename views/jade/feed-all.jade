@@ -1,0 +1,45 @@
+extend ../layout
+
+block pages_css
+  link( rel='stylesheet', href='/css/pages/dashboard.css')
+
+block content
+  include shared/header
+  .main
+    .container
+      .row
+        .span12
+          .widget.stacked
+            .widget-header
+              i.icon-th-list
+              h3 Feeds
+            .widget-content
+              input#token_csrf(value="#{token_csrf}", name="_csrf", type="hidden")
+              section#add-section
+                a.btn.btn-custom.btn-primary.pull-right(href="/feed/add/") Add
+                br.clear
+              section#feeds-section
+                table.table.table-bordered.table-striped.table-highlight.action-table
+                  thead
+                    tr
+                      th #
+                      th Item
+                      th &nbsp;
+                  tbody
+                    - for feed in feeds
+                      tr(id="feed-row-#{feed.id}")
+                        td #{feed.id}
+                        td 
+                          em.pull-right 
+                            span Add to 
+                            strong #{feed.category_name}
+                          br
+                          em.pull-right 
+                            span by 
+                            strong #{feed.user_firstName} #{feed.user_lastName.substring(0,1)}.
+                          h5 #{feed.title} 
+                          p #{feed.description.substring(0,210)}...
+                        td.td-actions
+                          a.btn.btn-danger.feed-delete(id="feed-delete-#{feed.id}", title="Delete", href="/feed/#{feed.id}")
+                            i.btn-icon-only.icon-remove
+  include shared/footer

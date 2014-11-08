@@ -1,0 +1,28 @@
+extend ../../layout
+
+block pages_css
+
+block content
+  include ../shared/header
+  .main
+    .container
+      .row
+        .span12
+          .widget.stacked
+            .widget-header
+              i.icon-html5
+              h3 Theme
+            .widget-content
+              section#theme-add
+                form#theme-add-form.form-horizontal(action="/admin/theme/", method="post", enctype="multipart/form-data")
+                  input(value="#{token_csrf}", name="_csrf", type="hidden")
+                  fieldset
+                    .control-group
+                      label.control-label(for="app-theme") Theme Zip File
+                      .controls
+                        input#app-theme.span8(type="file", name="theme")
+                    .form-actions
+                      button.btn.btn-custom.btn-primary(type="submit") Add/Update
+                      &nbsp;&nbsp;
+                      a.btn.btn-custom(href="/") Cancel
+  include ../shared/footer

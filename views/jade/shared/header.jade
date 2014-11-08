@@ -1,0 +1,68 @@
+.navbar.navbar-inverse.navbar-fixed-top
+  .navbar-inner
+    .container
+      a.btn.btn-navbar(data-toggle="collapse", data-target=".nav-collapse")
+        i.icon-user
+      
+      a.brand(href="/") 
+        img(src='/img/logo-light-42.png', alt='Elevator Screen')
+        span Admin Panel
+      .nav-collapse.collapse
+        ul.nav.pull-right
+          li.dropdown
+            a.dropdown-toggle(href="#", data-toggle="dropdown")
+              if user.isSuperAdmin
+                i.icon-star
+              else
+                i.icon-user
+              span.user-info #{user.firstName} #{user.lastName}
+              b.caret
+            ul.dropdown-menu
+              li
+                a(href="/user/profile/") Edit Profile
+              li
+                a(href="/sign-out/") Logout
+.subnavbar
+  .subnavbar-inner
+    .container
+      a.btn-subnavbar.collapsed(data-toggle="collapse", data-target=".subnav-collapse")
+        i.icon-reorder
+      .subnav-collapse.collapse
+        ul.mainnav
+          li(class="#{menu.home_active}")
+            a(href="/") 
+              i.icon-home
+              span Home
+          li(class="#{menu.feed_active}")
+            a(href="/feed")
+              i.icon-th-list
+              span Feeds
+          li(class="#{menu.setting_active} dropdown")
+            a.dropdown-toggle(href="#settings", data-toggle="dropdown")
+              i.icon-cog
+              span Settings
+              b.caret
+            ul.dropdown-menu
+              li
+                a(href="/setting/token/") App Token
+              li
+                a(href="/setting/forecast/") Forecast API
+              li
+                a(href="/setting/external/") External Urls
+              li
+                a(href="/setting/internal/") Internal Urls
+          if user.isAdmin
+            li(class="#{menu.admin_active} dropdown")
+              a.dropdown-toggle(href="#settings", data-toggle="dropdown")
+                i.icon-user
+                i#admin-key.icon-key
+                span Admin
+                b.caret
+              ul.dropdown-menu
+                li
+                  a(href="/admin/user/") Users
+                if user.isSuperAdmin
+                  li
+                    a(href="/admin/theme/") Theme
+                  li
+                    a(href="/admin/debug/") Debug

@@ -1,0 +1,16 @@
+extend ../layout
+
+block pages_css
+
+block content
+  .container
+    .row
+      .span12
+        .error-container
+          h1 Oops!
+          h2 404 Not Found
+          .error-details Sorry, an error has occured, the page you requested could not found!
+          .error-actions
+            a.btn.btn-custom.btn-primary(href="/")
+              i.icon-chevron-left
+              span &nbsp; Back to Elevator Screen

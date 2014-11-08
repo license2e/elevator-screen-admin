@@ -1,0 +1,55 @@
+extend ../../layout
+
+block pages_css
+
+block content
+  include ../shared/header
+  .main
+    .container
+      .row
+        .span12
+          .widget.stacked
+            .widget-header
+              i#user-left.icon-user
+              i#user-right.icon-user
+              i#user-middle.icon-user
+              h3 User
+            .widget-content
+              section#user-add
+                form#user-add-form.form-horizontal(action="/admin/user/add/", method="post")
+                  input(value="#{token_csrf}", name="_csrf", type="hidden")
+                  fieldset
+                    .control-group
+                      label.control-label(for="user-username") Username
+                      .controls
+                        input#user-username.span8(type="text", name="username")
+                    .control-group
+                      label.control-label(for="user-password") Password
+                      .controls
+                        input#user-password.span8(type="password", name="user_password")
+                    .control-group
+                      label.control-label(for="user-confirm-password") Confirm Password
+                      .controls
+                        input#user-confirm-password.span8(type="password", name="user_confirm_password")
+                    .control-group
+                      label.control-label(for="user-first-name") First Name
+                      .controls
+                        input#user-first-name.span8(type="text", name="first_name")
+                    .control-group
+                      label.control-label(for="user-last-name") Last Name
+                      .controls
+                        input#user-last-name.span8(type="text", name="last_name")
+                    .control-group
+                      label.control-label(for="user-admin") Admin?
+                      .controls
+                        label.radio
+                          input#user-admin(type="radio", name="user_admin", value="false", checked="checked") 
+                          span No
+                        label.radio
+                          input#user-admin(type="radio", name="user_admin", value="true") 
+                          span Yes
+                    .form-actions
+                      button.btn.btn-custom.btn-primary(type="submit") Add
+                      &nbsp;&nbsp;
+                      button.btn.btn-custom(type="reset") Cancel
+  include ../shared/footer

@@ -1,0 +1,43 @@
+extend ../layout
+
+block pages_css
+  link( rel='stylesheet', href='/css/pages/dashboard.css')
+
+block content
+  include shared/header
+  .main
+    .container
+      .row
+        .span12
+          .widget.stacked
+            .widget-header
+              i.icon-bookmark
+              h3 Quick Shortcuts
+            .widget-content
+              .shortcuts
+                a.shortcut(href="/feed")
+                  i.shortcut-icon.icon-th-list
+                  span.shortcut-label Feeds
+                a#forecast-shortcut.shortcut(href="/setting/forecast/")
+                  i#sun.shortcut-icon.icon-sun
+                  i#cloud.shortcut-icon.icon-cloud
+                  span.shortcut-label Forecast API
+                a.shortcut(href="/setting/external/")
+                  i.shortcut-icon.icon-rss
+                  span.shortcut-label External Urls
+                a.shortcut(href="/setting/internal/")
+                  i.shortcut-icon.icon-rss-sign
+                  span.shortcut-label Internal Urls
+                if user.isAdmin
+                  a.shortcut(href="/admin/user/")
+                    i.shortcut-icon.icon-user
+                    span.shortcut-label Users
+                if user.isSuperAdmin
+                  a.shortcut(href="/admin/theme/")
+                    i.shortcut-icon.icon-html5
+                    span.shortcut-label Theme
+                  a.shortcut(href="/admin/debug/")
+                    i.shortcut-icon.icon-file-text
+                    i#inspect-icon.shortcut-icon.icon-screenshot
+                    span.shortcut-label Debug
+  include shared/footer

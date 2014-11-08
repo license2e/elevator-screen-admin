@@ -1,0 +1,24 @@
+extend ../layout
+
+block pages_css
+  link( rel='stylesheet', href='/css/pages/dashboard.css')
+
+block content
+  include shared/header
+  .main
+    .container
+      .row
+        .span12
+          .widget.stacked
+            .widget-header
+              i.icon-cog
+              h3 App Token
+            .widget-content
+              section#setting-token
+                form#setting-view-token.form-horizontal(action="#token")
+                  fieldset
+                    .control-group
+                      label.control-label(for="setting-token") App Token
+                      .controls
+                        input#setting-token.span8(type="text", name="token", value="#{setting.value}", readonly="true")
+  include shared/footer

@@ -1,0 +1,39 @@
+extend ../layout
+
+block pages_css
+  link( rel='stylesheet', href='/css/pages/dashboard.css')
+
+block content
+  include shared/header
+  .main
+    .container
+      .row
+        .span12
+          .widget.stacked
+            .widget-header
+              i.icon-cog
+              h3 External Feed Settings
+            .widget-content
+              section#setting-exteral
+                form#setting-edit-external.form-horizontal.setting-edit-form(action="/setting/external/", method="post")
+                  input(value="#{token_csrf}", name="_csrf", type="hidden")
+                  .span12 
+                    p Specify the url to one or more RSS feeds for the external news to display in the Elevator Screen
+                  fieldset
+                    .control-group
+                      label.control-label(for="setting-news1") External News #1
+                      .controls
+                        input#setting-news1.span8(type="text", name="news1", value="#{settings['external_news1'].value}")
+                    .control-group
+                      label.control-label(for="setting-news2") External News #2
+                      .controls
+                        input#setting-news2.span8(type="text", name="news2", value="#{settings['external_news2'].value}")
+                    .control-group
+                      label.control-label(for="setting-news3") External News #3
+                      .controls
+                        input#setting-news3.span8(type="text", name="news3", value="#{settings['external_news3'].value}")
+                    .form-actions
+                      button.btn.btn-custom.btn-primary(type="submit") Save
+                      &nbsp;&nbsp;
+                      a.btn.btn-custom(href="/") Cancel
+  include shared/footer

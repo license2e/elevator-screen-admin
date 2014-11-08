@@ -1,0 +1,35 @@
+extend ../layout
+
+block pages_css
+  link( rel='stylesheet', href='/css/pages/dashboard.css')
+
+block content
+  include shared/header
+  .main
+    .container
+      .row
+        .span12
+          .widget.stacked
+            .widget-header
+              i.icon-pencil
+              h3 Settings
+            .widget-content
+              input#token_csrf(value="#{token_csrf}", name="_csrf", type="hidden")
+              section#settings-section
+                table.table.table-bordered.table-striped.table-highlight.action-table
+                  thead
+                    tr
+                      th #
+                      th Name
+                      th Value
+                      th &nbsp;
+                  tbody
+                    - for setting in settings
+                      tr(id="setting-row-#{setting.id}")
+                        td #{setting.id}
+                        td #{setting.name}
+                        td #{setting.value} 
+                        td.td-actions
+                          a.btn.btn-primary(href="/setting/#{setting.id}")
+                            i.btn-icon-only.icon-edit
+  include shared/footer

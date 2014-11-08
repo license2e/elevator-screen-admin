@@ -1,0 +1,42 @@
+extend ../../layout
+
+block pages_css
+
+block content
+  include ../shared/header
+  .main
+    .container
+      .row
+        .span12
+          .widget.stacked
+            .widget-header
+              i.icon-file-text
+              i#debug-inspect.icon-screenshot
+              h3 Debug
+            .widget-content
+              section#debug-enable
+                form#debug-enable-form.form-horizontal(action="/admin/debug/", method="post")
+                  input(value="#{token_csrf}", name="_csrf", type="hidden")
+                  fieldset
+                    .control-group
+                      label.control-label(for="app-debug") Debug?
+                      .controls
+                        if 'false' == setting.value
+                          label.radio
+                            input#app-debug(type="radio", name="enable_debug", value="false", checked="checked") 
+                            span No
+                          label.radio
+                            input#app-debug(type="radio", name="enable_debug", value="true") 
+                            span Yes
+                        else
+                          label.radio
+                            input#app-debug(type="radio", name="enable_debug", value="false") 
+                            span No
+                          label.radio
+                            input#app-debug(type="radio", name="enable_debug", value="true", checked="checked") 
+                            span Yes
+                    .form-actions
+                      button.btn.btn-custom.btn-primary(type="submit") Update
+                      &nbsp;&nbsp;
+                      a.btn.btn-custom(href="/") Cancel
+  include ../shared/footer

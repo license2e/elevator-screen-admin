@@ -1,0 +1,38 @@
+extend ../layout
+
+block pages_css
+
+block content
+  include shared/header
+  .main
+    .container
+      .row
+        .span12
+          .widget.stacked
+            .widget-header
+              i.icon-pencil
+              h3 Feeds
+            .widget-content
+              section#feed-add
+                form#feed-add-form.form-horizontal(action="/feed/add/", method="post")
+                  input(value="#{token_csrf}", name="_csrf", type="hidden")
+                  fieldset
+                    .control-group
+                      label.control-label(for="feed-title") Title
+                      .controls
+                        input#feed-title.span8(type="text", name="title")
+                    .control-group
+                      label.control-label(for="feed-description") Body
+                      .controls
+                        textarea#feed-description.span8(name="description",rows="8")
+                    .control-group
+                      label.control-label(for="feed-category") Select category
+                      .controls
+                        select#feed-category(name="category")
+                          - for category in categories
+                            option(value="#{category.id}") #{category.name}
+                    .form-actions
+                      button.btn.btn-custom.btn-primary(type="submit") Add
+                      &nbsp;&nbsp;
+                      button.btn.btn-custom(type="reset") Cancel
+  include shared/footer

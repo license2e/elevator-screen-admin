@@ -1,0 +1,58 @@
+extend ../../layout
+
+block pages_css
+  link( rel='stylesheet', href='/css/pages/dashboard.css')
+
+block content
+  include ../shared/header
+  .main
+    .container
+      .row
+        .span12
+          .widget.stacked
+            .widget-header
+              i#user-left.icon-user
+              i#user-right.icon-user
+              i#user-middle.icon-user
+              h3 Users
+            .widget-content
+              input#token_csrf(value="#{token_csrf}", name="_csrf", type="hidden")
+              section#add-section
+                a.btn.btn-custom.btn-primary.pull-right(href="/admin/user/add/") Add
+                br.clear
+              section#users-section
+                table.table.table-bordered.table-striped.table-highlight.action-table
+                  thead
+                    tr
+                      th #
+                      th User
+                      th Status
+                      th &nbsp;
+                  tbody
+                    for usr in users
+                      if usr.isSuperAdmin && !user.isSuperAdmin
+                        continue
+                      else
+                        tr(id="user-row-#{usr.id}")
+                          td #{usr.id}
+                          td 
+                            h4 #{usr.firstName} #{usr.lastName} 
+                            h5
+                              if usr.isAdmin
+                                em Admin User
+                              else if user.isSuperAdmin
+                                em Super Admin User
+                              else
+                                em Regular User
+                          td.td-status(id="user-status-#{usr.id}")
+                            if null != usr.deletedAt
+                              em.disabled Disabled
+                            else
+                              em.active Active
+                          td.td-actions
+                            if !usr.isSuperAdmin && usr.token != user.token
+                              a.btn.btn-success.user-enable(id="user-enable-#{usr.id}", title="Enable", href="/admin/user/#{usr.id}")
+                                i.btn-icon-only.icon-check-sign
+                              a.btn.btn-danger.user-disable(id="user-disable-#{usr.id}", title="Disable", href="/admin/user/#{usr.id}")
+                                i.btn-icon-only.icon-remove
+  include ../shared/footer

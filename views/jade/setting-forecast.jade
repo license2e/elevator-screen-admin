@@ -1,0 +1,37 @@
+extend ../layout
+
+block pages_css
+  link( rel='stylesheet', href='/css/pages/dashboard.css')
+
+block content
+  include shared/header
+  .main
+    .container
+      .row
+        .span12
+          .widget.stacked
+            .widget-header
+              i.icon-cog
+              h3 Forecast API Settings
+            .widget-content
+              section#setting-forecast
+                form#setting-edit-forecast.form-horizontal.setting-edit-form(action="/setting/forecast/", method="post")
+                  input(value="#{token_csrf}", name="_csrf", type="hidden")
+                  fieldset
+                    .control-group
+                      label.control-label(for="setting-api") Forecast API Key
+                      .controls
+                        input#setting-api.span8(type="text", name="api", value="#{settings['forecast_api'].value}")
+                    .control-group
+                      label.control-label Coordinates
+                      .controls
+                        //#setting-forecast-map
+                        input#setting-lat.span4(type="text", name="lat", placeholder="Latitude", value="#{settings['forecast_lat'].value}")
+                        input#setting-long.span4(type="text", name="long", placeholder="Longitude", value="#{settings['forecast_long'].value}")
+                        a#setting-loc-refresh.btn(href="#location-reload")
+                          i.btn-icon-only.icon-refresh
+                    .form-actions
+                      button.btn.btn-custom.btn-primary(type="submit") Save
+                      &nbsp;&nbsp;
+                      a.btn.btn-custom(href="/") Cancel
+  include shared/footer

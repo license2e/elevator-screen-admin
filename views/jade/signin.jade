@@ -1,0 +1,28 @@
+extend ../layout
+
+block pages_css
+  link( rel='stylesheet', href='/css/pages/signin.css')
+
+block content
+  .account-container.stacked
+    .content.clearfix
+      form#sigin-in(action="/sign-in", method="post")
+        input(value="#{token_csrf}", name="_csrf", type="hidden")
+        h1 
+          img#logo(src='/img/logo-light-72.png', alt='Elevator Screen')
+          #logo-bkg
+        .login-fields
+          p Sign in using your registered account:
+          .field
+            label(for="username") Username:
+            input#username.login.username-field(type="text", name="username", placeholder="Username")
+          .field
+            label(for="password") Password:
+            input#password.login.password-field(type="password", name="password", placeholder="Password")
+        .login-actions
+          span.login-checkbox
+            input#Field.field.login-checkbox(name="Field", type="checkbox", value="First Choice")
+            label.choice(for="Field") Keep me signed in
+          button.button.btn.btn-primary Sign In
+  //.login-extra
+  //a(href="#") Forgot Password?
